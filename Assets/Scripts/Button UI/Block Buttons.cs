@@ -18,7 +18,7 @@ public class BlockButtons : MonoBehaviour
     [Header ("___ Settings - Audio ___")]
     [SerializeField] private AudioClip sfxWin; // Аудио-эффект победы
 
-    [HideInInspector] internal int DeactivatedButtons = 0;
+    [HideInInspector] public int DeactivatedButtons = 0;
 
     private UnityAction<BaseEventData> cachedCallback; // Сохранённый слушатель, которого мы будет удалять/добавлять
     private bool isDeactivated = false; // Защита от двойного срабатывания метода
@@ -34,7 +34,7 @@ public class BlockButtons : MonoBehaviour
 /* Достаточно интересный метод. Так вот, тут мы ищем именно игровые кнопки, у которых ещё остался тег PlayingTag. После нажатия на любую из
 этих кнопок, её тег в другом скрипте меняется, НО, все кнопки деактивируются, и только оставшиеся будут включены обратно после кд. с EventSystem
 запарился конкретно... Вот так вот...*/
-    internal void InitializeButtons()
+    public void InitializeButtons()
     {
         _buttons = GameObject.FindGameObjectsWithTag(PlayingTag);
         _buttonsUI = new EventTrigger[_buttons.Length];
@@ -81,7 +81,7 @@ public class BlockButtons : MonoBehaviour
     }
 
 // Это и есть метод, который вырубает все кнопки с 1 удара, на время естественно
-    internal void DeactivateButtons()
+    public void DeactivateButtons()
     {
         if(isDeactivated) return;
 

@@ -20,7 +20,7 @@ public class ButtonPhysicObject : MonoBehaviour
     private Canvas canvas; // Тут канвас, на который мы будем передавать позицию RectTransform для кнопки
 
     [Range (0, 3)]
-    [HideInInspector]internal int type = 0; // 0 - обычный, 1 - тяжёлый, 2 - липкий, 3 - замороженный.
+    [HideInInspector]public int type = 0; // 0 - обычный, 1 - тяжёлый, 2 - липкий, 3 - замороженный.
 
     private int id = -1; // Айди мяча, который мы возьмём с ButtonType
 
@@ -132,7 +132,7 @@ public class ButtonPhysicObject : MonoBehaviour
 #region Set custom settings
 
     // Вставляем свой айди с другого скрипта, точнее просто передаём, а тут уже всатвляем. Мы же дожны соблюдать ООП.
-    internal void SetId(int index)
+    public void SetId(int index)
     {
         id = index;
         InitializeId();
@@ -149,7 +149,7 @@ public class ButtonPhysicObject : MonoBehaviour
 
     // Делаем фигуру тяжёлой
 
-    internal void SetThisAsHeavy()
+    public void SetThisAsHeavy()
     {
         var rb = gameObject.GetComponent<Rigidbody2D>();
         if(rb != null) {
@@ -162,7 +162,7 @@ public class ButtonPhysicObject : MonoBehaviour
 
     // Делаем фигуру липкой
 
-    internal void SetThisAsSticky()
+    public void SetThisAsSticky()
     {
         var rb = gameObject.GetComponent<Rigidbody2D>();
         if(rb != null) {
@@ -212,7 +212,7 @@ public class ButtonPhysicObject : MonoBehaviour
 
     // Делаем фигуру замороженной
 
-    internal void SetThisAsFrozen()
+    public void SetThisAsFrozen()
     {
         var rb = gameObject.GetComponent<Rigidbody2D>();
         if(rb != null) {
@@ -224,7 +224,7 @@ public class ButtonPhysicObject : MonoBehaviour
         _obj.tag = "Frozen";
     }
 
-    internal void SetItAsDefault()
+    public void SetItAsDefault()
     {
         var rb = gameObject.GetComponent<Rigidbody2D>();
         if(rb != null) {
@@ -246,7 +246,7 @@ public class ButtonPhysicObject : MonoBehaviour
         GetInfo();
     }
 
-    internal void GetInfo()
+    public void GetInfo()
     {
         var _syncButton = _obj.GetComponent<ButtonAnimation>();
         if(_syncButton != null) {

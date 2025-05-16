@@ -41,7 +41,7 @@ public class ButtonAnimation : MonoBehaviour
         AddGamePlayListener();
     }
 
-    internal void AddGamePlayListener()
+    public void AddGamePlayListener()
     {
         var eventTrigger = gameObject.GetComponent<EventTrigger>();
         if (eventTrigger == null)
@@ -72,7 +72,7 @@ public class ButtonAnimation : MonoBehaviour
         existingEntry.callback.AddListener(cachedCallback);
     }
 
-    internal void InitializePhysicObject(GameObject obj)
+    public void InitializePhysicObject(GameObject obj)
     {
         physicSimulatedBall = obj;
     }
@@ -81,7 +81,7 @@ public class ButtonAnimation : MonoBehaviour
 
 #region Animations
 
-    internal void AnimateMovingToActionBar() // Вызывается, когда мы нажимаем на кнопку непосредственно на канвасе
+    public void AnimateMovingToActionBar() // Вызывается, когда мы нажимаем на кнопку непосредственно на канвасе
     {
         var button = GetComponent<Button>();
 
@@ -117,7 +117,7 @@ public class ButtonAnimation : MonoBehaviour
         });
     }
 
-    internal void DestroyingObject() // уничтожение шарика из экшен-бара, анимация с помощью DOTween
+    public void DestroyingObject() // уничтожение шарика из экшен-бара, анимация с помощью DOTween
     {
         var rTransform = gameObject.GetComponent<RectTransform>();
         rTransform.DOSizeDelta(new Vector2(0, 0), speed).OnComplete(()=> {
@@ -129,7 +129,7 @@ public class ButtonAnimation : MonoBehaviour
 
 #region Data receiver
 
-    internal void GetBallId(int id, int type) // Ну думаю тут очевидно, просто принимаем айди, для дальнейшей обработки
+    public void GetBallId(int id, int type) // Ну думаю тут очевидно, просто принимаем айди, для дальнейшей обработки
     {
         if(id != -1) ballId = id;
         ballType = type;
@@ -139,7 +139,7 @@ public class ButtonAnimation : MonoBehaviour
 
 #region If ball frozen
 
-    internal void Unfreeze()
+    public void Unfreeze()
     {
         var _ButtonPhysicObject = physicSimulatedBall.GetComponent<ButtonPhysicObject>();
         if(_ButtonPhysicObject != null) _ButtonPhysicObject.SetItAsDefault();

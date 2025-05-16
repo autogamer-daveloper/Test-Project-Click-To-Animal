@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioClip sfxLose; // Аудио-эффект поражения
 
     [Range (0, 6)]
-    [HideInInspector] internal int closestPointId = 0; // Ближайшее свободное место
+    [HideInInspector] public int closestPointId = 0; // Ближайшее свободное место
 
     private bool _canInvokeResult = true; // Изначально тру, сделано для того, чтобы не вызывать повторно результат игровой сессии
     private AudioSource src; // Источник звука
@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
         if(srcObj != null) src = srcObj.GetComponent<AudioSource>();
     }
 
-    internal void AddBallToLibrary(int id, GameObject obj) // По названию метода тут всё понятно. Добавление мяча в библиотеку мячей (экшен-бар)
+    public void AddBallToLibrary(int id, GameObject obj) // По названию метода тут всё понятно. Добавление мяча в библиотеку мячей (экшен-бар)
     {
         var blockButtons = GameObject.FindFirstObjectByType<BlockButtons>();
         blockButtons.DeactivateButtons();
@@ -115,8 +115,8 @@ public class GameManager : MonoBehaviour
 #region Actions
 
     /* Проверка количества шаров находиться в другом скрипте, не вижу смысла копировать логику или объединять 2 скрипта под разные задачи.
-    Поэтому и модификатор доступа internal - альтернатива public, но с ограничениями. Об этом в документации от Microsoft */
-    internal void YouWin()
+    Поэтому и модификатор доступа public. */
+    public void YouWin()
     {
         Result(win);
     }
@@ -142,14 +142,14 @@ public class GameManager : MonoBehaviour
 
 //Этот класс отвечает за кнопки в экшен-баре, чтобы мы знали, с чем взаимодействовать визуально
 [System.Serializable]
-internal class ButtonsLibrary
+public class ButtonsLibrary
 {
     public ButtonAnimation[] buttons = new ButtonAnimation[7];
 }
 
 //Этот класс уже отвечает за внутреннюю обработку фигурок из экшен-бара. Тут храняться их айди короче.
 [System.Serializable]
-internal class IDsLibrary
+public class IDsLibrary
 {
     public int[] id = { -1, -1, -1, -1, -1, -1, -1 };
 

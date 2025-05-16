@@ -1565,6 +1565,7 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
+  idCount: 5
   ballPrefab: {fileID: 5823983245512163017, guid: 613b420387a078040bba425f83765c65, type: 3}
   regenerateButton: {fileID: 1088259712}
   startX: 4
@@ -1598,6 +1599,7 @@ MonoBehaviour:
   lose: {fileID: 2091735841}
   loseTime: 0.5
   sfxLose: {fileID: 8300000, guid: e6bc3e1e5d0cfdb4dbbd73fdcd377f2f, type: 3}
+  closestPointId: 0
 --- !u!114 &868727434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1616,6 +1618,7 @@ MonoBehaviour:
   _buttonsUI: []
   winTime: 0.5
   sfxWin: {fileID: 8300000, guid: fd0516f1ff11bef44867946b952170c1, type: 3}
+  DeactivatedButtons: 0
 --- !u!114 &868727435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2040,7 +2043,7 @@ Transform:
   m_GameObject: {fileID: 1162593218}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.1, y: 20, z: 0}
+  m_LocalPosition: {x: 5, y: 20, z: 0}
   m_LocalScale: {x: 1, y: 50, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3327,7 +3330,7 @@ Transform:
   m_GameObject: {fileID: 2067168658}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.1, y: 20, z: 0}
+  m_LocalPosition: {x: -5, y: 20, z: 0}
   m_LocalScale: {x: 1, y: 50, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

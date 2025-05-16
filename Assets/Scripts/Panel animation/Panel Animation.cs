@@ -64,7 +64,7 @@ public class PanelAnimation : MonoBehaviour
 #region Request to animation
 
     // Изменить свойство (Что-то похожее на переключатель)
-    internal void ChangeAnimState()
+    public void ChangeAnimState()
     {
         if(needShow) {
             Show();

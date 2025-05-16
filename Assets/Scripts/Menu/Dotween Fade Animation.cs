@@ -28,7 +28,7 @@ public class DotweenFadeanimation : MonoBehaviour
     }
 
     // Начать анимацию, если хотим из другого скрипта
-    internal void StartAnimation()
+    public void StartAnimation()
     {
         Animate();
     }

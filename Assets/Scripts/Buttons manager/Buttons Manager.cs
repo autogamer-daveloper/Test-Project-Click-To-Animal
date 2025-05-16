@@ -7,6 +7,7 @@ public class ButtonsManager : MonoBehaviour
     [Header ("___ Balls management ___")]
     [SerializeField] private BallsLibrary[] library; /* Библиотеки типов шаров, в каждой библиотеке должны содержаться шары одного вида,
     иначе это можно считать за баг! Но у меня всё окей, так что багов нету. */
+    [SerializeField] private int idCount = 5; // Количество типов животных в шариках
     [SerializeField] private GameObject ballPrefab; // Префаб шара
     [SerializeField] private Button regenerateButton; // Кнопка регенерации уровня (перестройка с учётом нынешних шаров)
     [Range (0f, 10f)] // Ограничение x рандомизации
@@ -16,13 +17,18 @@ public class ButtonsManager : MonoBehaviour
     [SerializeField] private float timeToActivateRegeneration = 5f; // Через сколько можно разрешить повторную перегенерацию уровня после перегенерации
 
     private Randomize randomize; // Класс
-
     private GameObject tempBall; // Создаваемый мяч
+    private const int count = 3;
 
     // Просто очередное начало рабочего дня скрипта
-    private void Start()
+    private void Awake()
     {
-        randomize = GetComponent<Randomize>();
+        library = new BallsLibrary[idCount];
+        for (int i = 0; i < idCount; i++)
+        {
+            library[i] = new BallsLibrary();
+        }
+        randomize = gameObject.AddComponent<Randomize>();
         StartSpawnBalls();
         regenerateButton.onClick.AddListener(Regenerate);
     }
@@ -53,7 +59,7 @@ public class ButtonsManager : MonoBehaviour
 
         for(int i = 0; i < library.Length; i++)
         {
-            for(int x = 0; x < MaximumBalls.count; x++)
+            for(int x = 0; x < count; x++)
             {
                 if(library[i].balls[x] != null) {
                 float cordX = 0;
@@ -124,7 +130,7 @@ public class ButtonsManager : MonoBehaviour
 
         for(int i = 0; i < library.Length; i++)
         {
-            for(int x = 0; x < MaximumBalls.count; x++)
+            for(int x = 0; x < count; x++)
             {
                 float cordX = 0;
                 float cordY = 0;
@@ -174,7 +180,7 @@ public class ButtonsManager : MonoBehaviour
     // Также создал отдельный класс рандома
     private int RandomToMaxBalls(int[] exceptions)
     {
-        float maxBalls = MaximumBalls.count * library.Length;
+        float maxBalls = count * library.Length;
         int number;
 
         HashSet<int> exceptionSet = new HashSet<int>(exceptions);
@@ -194,23 +200,17 @@ public class ButtonsManager : MonoBehaviour
 
 /* Тут находятся классы, которые обеспечивают работу главного класса из этого скрипта. */
 
-//Очевидно
-internal static class MaximumBalls
-{
-    internal static int count = 3;
-}
-
 //Тоже очевидно
 [System.Serializable]
 public class BallsLibrary
 {
-    public GameObject[] balls = new GameObject[MaximumBalls.count];
+    public GameObject[] balls = new GameObject[3];
 }
 
 //Даже не программист поймёт, что это тоже очевидно
-internal class Randomize : Component
+public class Randomize : MonoBehaviour
 {
-    internal float Randomizing(float number)
+    public float Randomizing(float number)
     {
         float result = Random.Range(0, number);
         return result;
