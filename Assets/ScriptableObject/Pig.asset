@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c794868898017304581e649564a44ef4, type: 3}
+  m_Name: Pig
+  m_EditorClassIdentifier: 
+  ButtonImage: {fileID: 1057077635, guid: b67ebf919cbf9304a98e55cafec02d32, type: 3}
+  ButtonImageHeavy: {fileID: -1432389775, guid: b67ebf919cbf9304a98e55cafec02d32, type: 3}
+  ButtonImageSticky: {fileID: -179968780, guid: b67ebf919cbf9304a98e55cafec02d32, type: 3}
+  ButtonImageFrozen: {fileID: -1614397211, guid: b67ebf919cbf9304a98e55cafec02d32, type: 3}
